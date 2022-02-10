@@ -156,7 +156,7 @@ void Tent::viewAnExhibit() {
 				cout << "(" << i << ")" << exhibits[i - 1]->getName() << endl;
 			}
 			cout << "Which would you like to visit? ";
-			choice = getIntegerFromCIN();
+			choice = getIntegerFromCin();
 			cout << DOUBLE_ENDLINE;
 		}
 		exhibits[choice - 1]->perform();
@@ -184,7 +184,7 @@ Tent* Tent::takeAnExit() {
 				cout << i + 1 << ":" << "-- \"" << exits[i]->getName() << "\" " << endl;;
 
 		cout << "Choice? ";
-		choice = getIntegerFromCIN();
+		choice = getIntegerFromCin();
 		if (choice == 0 && exitCount == 0) {
 			colorSetter.saveState();
 			colorSetter.setColors(Black, Gold);

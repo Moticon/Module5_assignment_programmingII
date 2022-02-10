@@ -26,14 +26,17 @@ const string DOUBLE_ENDLINE = "\n\n";   // used for putting out two endlines... 
 void clearScreen();			// clear the console screen
 char showMenuGetChoice();	// show menu of options, return entered choice
 void pressAKeyToContinue();	// pause the program til user enters a choice
-int getIntegerFromCIN();	// get an integer, handling errors if alpha chars entered
+int getIntegerFromCin();	// get an integer, handling errors if alpha chars entered
 
 // All the include files 
 /*  NOTE -- You'll need to put "Creature.h" before your child classes
  *          and you'll need to put "Creature.h" before the Tent.h here
  */
 #include "ColorText.h"
+
+// Put your class heirarchies here
 #include "Creature.h"
-#include "MagicalBeast.h"
+// your child class go here, like on the next line, but you'll have your own child class header files to include. 
+// #include "MagicalBeast.h"
 #include "Tent.h"
 

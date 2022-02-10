@@ -53,7 +53,7 @@ void clearScreen() {
  *  Inputs:   none
  *  Returns:  integer entered, -1 if alpha entered
  */
-int getIntegerFromCIN() {
+int getIntegerFromCin() {
 	int response; // the integer entered by the user
 	cin >> response;
 	if (cin.fail()) {

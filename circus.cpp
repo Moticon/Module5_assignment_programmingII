@@ -20,21 +20,13 @@ int main() {
 	 * 
 	 * Create all your creature exhibits here!
 	 **********************************************/
-	MagicalBeast chimera("Chimera", 
-		                 "The magnificent 3 headed creature of the Greek Mythos!", 
-		                 "Rooarrrr!!",
-		                 "It flies! It runs! It Leaps -- Lookout there!!", 
-		                 "its hide can't be peirced by metal!");
-	MagicalBeast redDragon("Red Dragon", 
-		                   "This fiersome, firesome beast has laid towns waste - but do not fear", 
-		                   "I have come far to visit... I won't eat you", 
-		                   "The red dragon leaps and takes to the air, soaring overhead. As it passes it leaves a trail of smoke and the smell of brimstone!",
-		                   "Breathes Fire!!"); 
-	MagicalBeast pixie("Pixie", 
-		               "This small Fey creature is a tricky as it is winsome.", 
-		               "<in a high pitched voice> Hello! tee hee", 
-		               "The pixie flits from place to place in the air", 
-		               "these creatures cannot be charmed!"); 
+	// here's an example of declaring a "magicalBeast" if you had such a class
+	//MagicalBeast chimera("Chimera", 
+	//	                 "The magnificent 3 headed creature of the Greek Mythos!", 
+	//	                 "Rooarrrr!!",
+	//	                 "It flies! It runs! It Leaps -- Lookout there!!", 
+	//	                 "its hide can't be peirced by metal!");
+
 
 	/**********************************************
 	 * Here you create your tent objects. The Tent constructor expects 2 strings and a boolean value
@@ -44,13 +36,15 @@ int main() {
 	 *  the third value is 'true' if you can exit the circus from the tent. It is false if you can't leave the circus from this tent
 	 * 
 	 * I've made four tents as an example for you. 
+	 * you must create your own tents. 
 	 **********************************************/
 	Tent ticketTent("Tickets", "You are in a small tent that sells tickets. From here you can leave the circus.", true); 
 	Tent dragonTent("Dragons!", "You're in a vast tent with large menacing creatures quietly waiting", false); 
 	Tent beastTent("Magical Beasts", "You're in a smaller tent with mythical creatures you can watch!", false); 
 	Tent storageTent("Storage Tent", "This tent is filled with boxes, cobwebs, and rusting detritus", false); 
 
-	// Other variables declared here. 
+	// Other variables declared here.  
+	// Do not change this section. 
 	char choice;						// used for collecting the user input. 
 	Tent* currentTent = &ticketTent;  // a pointer to the current tent - visitors start in the ticket tent.
 
@@ -60,33 +54,27 @@ int main() {
 	 * it's possible to have one way links between the tents, but all of these connections
 	 * are two-way (except for the storageTent, which has no exits). 
 	 */
-	// connect the ticketTent
+	// connect the ticketTent to the dragon tent and the beast tent. 
 	ticketTent.addExit(&dragonTent);
 	ticketTent.addExit(&beastTent); 
 
-	// connect the dragon tent to the entrance and beast tent
-	dragonTent.addExit(&ticketTent); 
-	dragonTent.addExit(&beastTent);
-
-	// connect the beast tent to the dragon tent, ticket tent, and storage tent.
-	beastTent.addExit(&dragonTent);
-	beastTent.addExit(&ticketTent); 
-	beastTent.addExit(&storageTent); 
+	// you would need other sections connecting the other tents to the each other
+	// according to your circus "map". 
 
 	/***********************************************
      * Add all your creatures to the tents they belong in. 
 	 *  -- NOTE -- You must add a pointer to the object so 
 	 *     pass the address of an object. 
-	 *  EXAMPLE. If you have a creature object called a "chimera"
-	 *    the command would be:
+	 *  EXAMPLE. If you have a creature object called a "chimera" 
+	 *    like the example above, the command would be:
+	 * 
 	 *      "beastTent.addExhibit(&chimera);"
      */
-	ticketTent.addExhibit(&chimera);
-	ticketTent.addExhibit(&redDragon);
-	ticketTent.addExhibit(&pixie);
 
 
-	/* 
+
+	/* ************ DO NOT CHANGE CODE BELOW THIS LINE *************************
+	 *  
 	 *  Here's the main loop.  using the current tent pointer:
 	 *    -- Show the description of the tent. 
 	 *    -- then get a choice (look at exhibits or use an exit)

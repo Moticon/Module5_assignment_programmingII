@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="circus.cpp" />
     <ClCompile Include="circusFunctions.cpp" />
-    <ClCompile Include="Creature.cpp" />
     <ClCompile Include="MagicalBeast.cpp" />
     <ClCompile Include="Tent.cpp" />
   </ItemGroup>

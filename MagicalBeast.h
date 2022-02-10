@@ -1,23 +1,14 @@
 #pragma once
 #include "circusHeader.h"
+// This is left in place simply as an example of how you can declare 
+// a child class of the Creature class.
+// You have to add the unique private member variable.
+// you will need to add all the public methods. 
 
 class MagicalBeast : public Creature {
 private:
-	string magicalQuality;
+
 
 public:
-	MagicalBeast() : Creature() {
-		magicalQuality = ""; 
-	}
 
-	MagicalBeast(string name, string description, string sound, string movement, string quality) : Creature(name, description, sound, movement)
-	{
-		magicalQuality = quality;
-	};
-
-	virtual void perform();
-
-	string getQuality() {
-		return magicalQuality;
-	}
 };

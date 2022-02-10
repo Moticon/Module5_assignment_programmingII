@@ -23,13 +23,19 @@ enum COLORS { Black, DarkBlue, ForestGreen, Blue, DarkRed, LightPurple, Gold, Li
 
 const int BACKGROUND_MULTIPLIER = 16; // this constant is used to calculate the combined foreground/background color code.
 
+/*  Class: ColorText - a class to modify the color of the text on a windows C++ console
+ *  Purpose:  provide a little color!
+ * 
+ *  Usage: Declare a ColorText object. Then you can call the methods to setColor, save the current color,
+ *    restore the saved color setting. The class is standalone and all variables are internal. 
+ */
 class ColorText {
 private:
     int foreground; // this is the color of the foreground
     int background; // this is the color of the background 
     int combinedColor;  // this is the combined, calculated code to set foreground and background. 
     HANDLE consoleHandle; // this is a type that allows us to manipulate the console. 
-    int savedCombinedColor; 
+    int savedCombinedColor; // This is the value where a current setting save for later restoration
 public:
     // constructor - default - it sets the default black and white colors.
     ColorText() {
@@ -39,13 +45,20 @@ public:
     }
 
     // this constructor allows you to specify the starting colors. 
+    // Inputs: Foreground and background colors. use the enumerated names above
+    // return: a ColorText object
     ColorText(int foreground, int background) {
         setColors(foreground, background); 
         consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE); 
     }
 
-    // This is passed a new foreground and background color
-    // it stores these and then sets the console colors. 
+    /*  Function: setColors
+     *  Purpose:  change the current foreground and background text colors
+     *  Inputs:   two integers, one for foreground, one for background
+     *            the user should use the enumerated types in this class (above)
+     *            for clarity and safety
+     *  Returns:  none
+     */
     void setColors(int fore, int back) {
         foreground = fore; 
         background = back;
@@ -57,16 +70,20 @@ public:
         SetConsoleTextAttribute(consoleHandle, combinedColor);
     }
 
-    // this function sets the screen color to the current colors. It's redundant. 
-    // this function will probably not be used.. remove later after testing. 
-    void setScreenColor() {
-        SetConsoleTextAttribute(consoleHandle, combinedColor); 
-    }
-
+    /*  Function: saveState
+     *  Purpose:  The current color settings will be saved internally
+     *  Inputs:   none
+     *  Returns:  none
+     */
     void saveState() {
         savedCombinedColor = combinedColor;
     }
 
+    /*  Function: restoreState
+     *  Purpose:  The saved color state is restored. 
+     *  Inputs:   none
+     *  Returns:  none
+     */
     void restoreState() {
         setColors(savedCombinedColor % BACKGROUND_MULTIPLIER, savedCombinedColor / BACKGROUND_MULTIPLIER); 
     }
